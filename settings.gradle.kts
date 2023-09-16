@@ -24,7 +24,6 @@ rootProject.name = "Compose MenuProvider"
 
 include(
     ":core",
-    ":animation"
 )
 
 gradleEnterprise {
