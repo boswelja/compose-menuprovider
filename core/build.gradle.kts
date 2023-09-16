@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.compose.multiplatform)
+
     alias(libs.plugins.detekt)
 }
 
@@ -38,8 +39,8 @@ kotlin {
     }
 }
 
-//detekt {
-//    buildUponDefaultConfig = true
-//    config.setFrom("$rootDir/config/detekt.yml")
-//    basePath = rootDir.absolutePath
-//}
+detekt {
+    buildUponDefaultConfig = true
+    config.setFrom("$rootDir/config/detekt.yml")
+    basePath = rootDir.absolutePath
+}
