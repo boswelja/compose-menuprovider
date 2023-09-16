@@ -22,7 +22,10 @@ plugins {
 
 rootProject.name = "Compose MenuProvider"
 
-include(":core")
+include(
+    ":core",
+    ":animation"
+)
 
 gradleEnterprise {
     buildScan {
