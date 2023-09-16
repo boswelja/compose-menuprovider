@@ -26,8 +26,10 @@ android {
 }
 
 kotlin {
-    androidTarget()
     jvmToolchain(17)
+    explicitApi()
+
+    androidTarget()
 
     sourceSets {
         commonMain {

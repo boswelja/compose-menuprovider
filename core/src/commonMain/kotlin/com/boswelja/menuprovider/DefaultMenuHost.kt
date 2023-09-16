@@ -22,7 +22,7 @@ internal class DefaultMenuHost : MenuHost {
  * Creates a new [MenuHost] for use in Composition. This should be provided via [LocalMenuHost].
  */
 @Composable
-fun rememberMenuHost(): MenuHost {
+public fun rememberMenuHost(): MenuHost {
     return remember {
         DefaultMenuHost()
     }

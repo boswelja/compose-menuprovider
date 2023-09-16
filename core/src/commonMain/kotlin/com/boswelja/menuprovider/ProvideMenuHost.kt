@@ -7,7 +7,7 @@ import androidx.compose.runtime.CompositionLocalProvider
  * A convenience function for providing a new MenuHost.
  */
 @Composable
-fun ProvideMenuHost(
+public fun ProvideMenuHost(
     menuHost: MenuHost,
     content: @Composable () -> Unit
 ) {

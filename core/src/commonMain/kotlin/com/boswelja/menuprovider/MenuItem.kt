@@ -14,7 +14,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
  * be displayed as icons outside of an overflow menu, if possible.
  */
 @Stable
-data class MenuItem(
+public data class MenuItem(
     val label: String,
     val imageVector: ImageVector,
     val onClick: () -> Unit,

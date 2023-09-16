@@ -7,7 +7,7 @@ import androidx.compose.runtime.DisposableEffect
  * Provide a number of [MenuItem]s to a [MenuHost].
  */
 @Composable
-fun ProvideMenuItems(
+public fun ProvideMenuItems(
     vararg menuItems: MenuItem,
     menuHost: MenuHost = LocalMenuHost.current
 ) {
