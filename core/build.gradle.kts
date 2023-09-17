@@ -7,6 +7,8 @@ plugins {
 
     id("maven-publish")
 }
+group = "io.github.boswelja.menuprovider"
+version = "1.0"
 
 android {
     namespace = "com.boswelja.menuprovider"
@@ -38,7 +40,9 @@ kotlin {
     jvmToolchain(17)
     explicitApi()
 
-    androidTarget()
+    androidTarget {
+        publishLibraryVariants("release")
+    }
 
     sourceSets {
         commonMain {
@@ -58,17 +62,6 @@ detekt {
 }
 
 publishing {
-    publications {
-        register<MavenPublication>("release") {
-            groupId = "io.github.boswelja.menuprovider"
-            artifactId = "core"
-            version = "1.0"
-
-            afterEvaluate {
-                from(components["release"])
-            }
-        }
-    }
     repositories {
         if (System.getenv("PUBLISHING") == "true") {
             maven("https://maven.pkg.github.com/boswelja/Compose-MenuProvider") {

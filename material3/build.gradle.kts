@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.gradle.plugin.extraProperties
-
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.multiplatform)
@@ -9,6 +7,9 @@ plugins {
 
     id("maven-publish")
 }
+
+group = "io.github.boswelja.menuprovider"
+version = "1.0"
 
 android {
     namespace = "com.boswelja.menuprovider.material3"
@@ -40,7 +41,9 @@ kotlin {
     jvmToolchain(17)
     explicitApi()
 
-    androidTarget()
+    androidTarget {
+        publishLibraryVariants("release")
+    }
 
     sourceSets {
         commonMain {
@@ -59,17 +62,6 @@ detekt {
 }
 
 publishing {
-    publications {
-        register<MavenPublication>("release") {
-            groupId = "io.github.boswelja.menuprovider"
-            artifactId = "material3"
-            version = "1.0"
-
-            afterEvaluate {
-                from(components["release"])
-            }
-        }
-    }
     repositories {
         if (System.getenv("PUBLISHING") == "true") {
             maven("https://maven.pkg.github.com/boswelja/Compose-MenuProvider") {
