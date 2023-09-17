@@ -69,4 +69,26 @@ publishing {
             }
         }
     }
+    repositories {
+        if (System.getenv("CI") == "true") {
+            maven("https://maven.pkg.github.com/boswelja/Compose-MenuProvider") {
+                val githubUsername: String? by project.properties
+                val githubToken: String? by project.properties
+                name = "github"
+                credentials {
+                    username = githubUsername
+                    password = githubToken
+                }
+            }
+            maven("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/") {
+                val ossrhUsername: String? by project
+                val ossrhPassword: String? by project
+                name = "oss"
+                credentials {
+                    username = ossrhUsername
+                    password = ossrhPassword
+                }
+            }
+        }
+    }
 }
