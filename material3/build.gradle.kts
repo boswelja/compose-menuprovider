@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.gradle.plugin.extraProperties
-
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.multiplatform)
@@ -40,7 +38,9 @@ kotlin {
     jvmToolchain(17)
     explicitApi()
 
-    androidTarget()
+    androidTarget {
+        publishLibraryVariants("release")
+    }
 
     sourceSets {
         commonMain {
@@ -60,14 +60,10 @@ detekt {
 
 publishing {
     publications {
-        register<MavenPublication>("release") {
+        register<MavenPublication>("kotlinMultiplatform") {
             groupId = "io.github.boswelja.menuprovider"
             artifactId = "material3"
             version = "1.0"
-
-            afterEvaluate {
-                from(components["release"])
-            }
         }
     }
     repositories {

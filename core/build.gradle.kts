@@ -38,7 +38,9 @@ kotlin {
     jvmToolchain(17)
     explicitApi()
 
-    androidTarget()
+    androidTarget {
+        publishLibraryVariants("release")
+    }
 
     sourceSets {
         commonMain {
@@ -59,14 +61,10 @@ detekt {
 
 publishing {
     publications {
-        register<MavenPublication>("release") {
+        register<MavenPublication>("kotlinMultiplatform") {
             groupId = "io.github.boswelja.menuprovider"
             artifactId = "core"
             version = "1.0"
-
-            afterEvaluate {
-                from(components["release"])
-            }
         }
     }
     repositories {
