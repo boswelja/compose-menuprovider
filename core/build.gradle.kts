@@ -4,6 +4,8 @@ plugins {
     alias(libs.plugins.compose.multiplatform)
 
     alias(libs.plugins.detekt)
+
+    id("maven-publish")
 }
 
 android {
@@ -22,6 +24,13 @@ android {
     lint {
         sarifReport = true
         htmlReport = false
+    }
+
+    publishing {
+        singleVariant("release") {
+            withJavadocJar()
+            withSourcesJar()
+        }
     }
 }
 
@@ -46,4 +55,18 @@ detekt {
     buildUponDefaultConfig = true
     config.setFrom("$rootDir/config/detekt.yml")
     basePath = rootDir.absolutePath
+}
+
+publishing {
+    publications {
+        register<MavenPublication>("release") {
+            groupId = "io.github.boswelja.menuprovider"
+            artifactId = "core"
+            version = "1.0"
+
+            afterEvaluate {
+                from(components["release"])
+            }
+        }
+    }
 }
