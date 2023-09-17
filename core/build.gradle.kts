@@ -70,7 +70,7 @@ publishing {
         }
     }
     repositories {
-        if (System.getenv("CI") == "true") {
+        if (System.getenv("PUBLISHING") == "true") {
             maven("https://maven.pkg.github.com/boswelja/Compose-MenuProvider") {
                 val githubUsername: String? by project.properties
                 val githubToken: String? by project.properties
