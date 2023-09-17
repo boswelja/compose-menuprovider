@@ -8,6 +8,9 @@ plugins {
     id("maven-publish")
 }
 
+group = "io.github.boswelja.menuprovider"
+version = "1.0"
+
 android {
     namespace = "com.boswelja.menuprovider.material3"
 
@@ -59,13 +62,6 @@ detekt {
 }
 
 publishing {
-    publications {
-        register<MavenPublication>("kotlinMultiplatform") {
-            groupId = "io.github.boswelja.menuprovider"
-            artifactId = "material3"
-            version = "1.0"
-        }
-    }
     repositories {
         if (System.getenv("PUBLISHING") == "true") {
             maven("https://maven.pkg.github.com/boswelja/Compose-MenuProvider") {
