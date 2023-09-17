@@ -24,6 +24,7 @@ rootProject.name = "Compose MenuProvider"
 
 include(
     ":core",
+    ":material3",
 )
 
 gradleEnterprise {
