@@ -123,5 +123,10 @@ tasks.withType<DokkaTaskPartial>().configureEach {
             url.set(URL("https://developer.android.com/reference/kotlin/"))
             packageListUrl.set(URL("https://developer.android.com/reference/kotlin/androidx/package-list"))
         }
+        sourceLink {
+            localDirectory.set(projectDir.resolve("src"))
+            remoteUrl.set(URL("https://github.com/boswelja/compose-menuprovider/tree/main/material3/src"))
+            remoteLineSuffix.set("#L")
+        }
     }
 }
