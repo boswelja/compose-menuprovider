@@ -7,7 +7,6 @@ dokka = "1.9.0"
 compose = "1.5.1"
 
 [libraries]
-dokka-android = { module = "org.jetbrains.dokka:android-documentation-plugin", version.ref = "dokka" }
 kotlin-test = { group = "org.jetbrains.kotlin", name = "kotlin-test" }
 
 [plugins]
