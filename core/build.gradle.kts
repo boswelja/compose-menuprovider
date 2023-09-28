@@ -1,9 +1,14 @@
+import org.jetbrains.dokka.gradle.DokkaTaskPartial
+import java.net.URL
+
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.compose.multiplatform)
 
     alias(libs.plugins.detekt)
+
+    alias(libs.plugins.dokka)
 
     id("maven-publish")
 }
@@ -108,6 +113,16 @@ publishing {
                 developerConnection.set("scm:git:ssh://github.com/boswelja/compose-menuprovider.git")
                 url.set("https://github.com/boswelja/compose-menuprovider")
             }
+        }
+    }
+}
+
+tasks.withType<DokkaTaskPartial>().configureEach {
+    dokkaSourceSets.configureEach {
+        sourceLink {
+            localDirectory.set(file("src/main/kotlin"))
+            remoteUrl.set(URL("https://github.com/boswelja/compose-menuprovider/blob/main/core/src/main/kotlin"))
+            remoteLineSuffix.set("#L")
         }
     }
 }
