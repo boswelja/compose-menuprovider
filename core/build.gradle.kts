@@ -84,4 +84,30 @@ publishing {
             }
         }
     }
+
+    publications.withType<MavenPublication> {
+        pom {
+            description = "An AndroidX MenuHost & MenuProvider-like API for Jetpack Compose!"
+            url = "https://github.com/boswelja/compose-menuprovider"
+            licenses {
+                license {
+                    name = "MIT"
+                    url = "https://github.com/boswelja/compose-menuprovider/blob/main/LICENSE"
+                }
+            }
+            developers {
+                developer {
+                    id = "boswelja"
+                    name = "Jack Boswell (boswelja)"
+                    email = "boswelja@outlook.com"
+                    url = "https://github.com/boswelja"
+                }
+            }
+            scm {
+                connection.set("scm:git:github.com/boswelja/compose-menuprovider.git")
+                developerConnection.set("scm:git:ssh://github.com/boswelja/compose-menuprovider.git")
+                url.set("https://github.com/boswelja/compose-menuprovider")
+            }
+        }
+    }
 }
