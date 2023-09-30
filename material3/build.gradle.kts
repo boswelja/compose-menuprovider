@@ -47,7 +47,6 @@ kotlin {
     jvmToolchain(17)
     explicitApi()
 
-    jvm()
     androidTarget {
         publishLibraryVariants("release")
     }
