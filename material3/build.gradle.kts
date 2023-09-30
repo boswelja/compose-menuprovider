@@ -92,6 +92,7 @@ publishing {
 
     publications.withType<MavenPublication> {
         pom {
+            name = "material3"
             description = "An AndroidX MenuHost & MenuProvider-like API for Jetpack Compose!"
             url = "https://github.com/boswelja/compose-menuprovider"
             licenses {
