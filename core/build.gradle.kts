@@ -11,6 +11,7 @@ plugins {
     alias(libs.plugins.dokka)
 
     id("maven-publish")
+    id("signing")
 }
 group = "io.github.boswelja.menuprovider"
 version = "1.0.2"
@@ -64,6 +65,13 @@ detekt {
     buildUponDefaultConfig = true
     config.setFrom("$rootDir/config/detekt.yml")
     basePath = rootDir.absolutePath
+}
+
+signing {
+    val signingKey: String? by project
+    val signingPassword: String? by project
+    useInMemoryPgpKeys(signingKey, signingPassword)
+    sign(publishing.publications)
 }
 
 publishing {
