@@ -46,7 +46,7 @@ jobs:
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v2
         with:
-          path: "build/dokka/"
+          path: "build/dokka/htmlMultiModule/"
 
   deploy-pages:
     runs-on: ubuntu-latest
