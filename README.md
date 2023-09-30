@@ -4,23 +4,33 @@ An AndroidX MenuHost & MenuProvider-like API for Jetpack Compose!
 
 ## Setup
 
-TODO
+```kt
+dependencies {
+    val menuproviderVersion = "1.0.3"
+    
+    // Core provides a generic implementation fit for any design system
+    implementation("io.github.boswelja.menuprovider:core:$menuproviderVersion")
+    
+    // material3 contains opinionated components to streamline development
+    implementation("io.github.boswelja.menuprovider:material3:$menuproviderVersion")
+}
+```
 
 ## Usage
 
 ```kotlin
 @Composable
 fun MyComposable() {
-    val menuHost = rememberMenuHost()
-    ProvideMenuHost(menuHost) {
-        // From here, we can provide MenuItems from any child Composable
-        MyMenuProvidingComposable()
-    }
-    
-    // Let's create some kind of menu
-    Row {
-        menuHost.menuItems.forEach { menuItem ->
-            MyMenuItem(menuItem)
+    ProvideMenuHost {
+        Scaffold(
+            topBar = {
+                TopAppBar(
+                    title = { Text("My Top Bar") },
+                    actions = { TopAppBarMenuItems() }
+                )
+            }
+        ) {
+            MyMenuProvidingComposable()
         }
     }
 }
@@ -37,3 +47,7 @@ fun MyMenuProvidingComposable() {
     )
 }
 ```
+
+## Documentation
+
+Docs are published with each release to https://boswelja.github.io/compose-menuprovider/.

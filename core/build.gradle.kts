@@ -128,10 +128,11 @@ publishing {
 
 tasks.withType<DokkaTaskPartial>().configureEach {
     dokkaSourceSets.configureEach {
-        externalDocumentationLink {
-            url.set(URL("https://developer.android.com/reference/kotlin/"))
-            packageListUrl.set(URL("https://developer.android.com/reference/kotlin/androidx/package-list"))
-        }
+        includes.from("MODULE.md")
+        externalDocumentationLink(
+            url = "https://developer.android.com/reference/kotlin/",
+            packageListUrl = "https://developer.android.com/reference/kotlin/androidx/package-list"
+        )
         sourceLink {
             localDirectory.set(projectDir.resolve("src"))
             remoteUrl.set(URL("https://github.com/boswelja/compose-menuprovider/tree/main/core/src"))
