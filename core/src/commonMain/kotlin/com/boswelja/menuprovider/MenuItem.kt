@@ -18,5 +18,5 @@ public data class MenuItem(
     val label: String,
     val imageVector: ImageVector,
     val onClick: () -> Unit,
-    val isImportant: Boolean,
+    val isImportant: Boolean = false,
 )
