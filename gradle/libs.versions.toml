@@ -4,7 +4,7 @@ detekt = "1.23.3"
 kotlin = "1.9.20"
 dokka = "1.9.10"
 
-compose = "1.5.10"
+compose = "1.5.11"
 
 [libraries]
 kotlin-test = { group = "org.jetbrains.kotlin", name = "kotlin-test" }
