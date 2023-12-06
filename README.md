@@ -6,7 +6,7 @@ An AndroidX MenuHost & MenuProvider-like API for Jetpack Compose!
 
 ```kt
 dependencies {
-    val menuproviderVersion = "1.0.3"
+    val menuproviderVersion = "1.1.0"
     
     // Core provides a generic implementation fit for any design system
     implementation("io.github.boswelja.menuprovider:core:$menuproviderVersion")
@@ -26,7 +26,7 @@ fun MyComposable() {
             topBar = {
                 TopAppBar(
                     title = { Text("My Top Bar") },
-                    actions = { TopAppBarMenuItems() }
+                    actions = { AnimatedTopAppBarMenuItems() }
                 )
             }
         ) {
@@ -43,7 +43,7 @@ fun MyMenuProvidingComposable() {
             imageVector = Icons.Default.Add,
             onClick = { performAction() },
             isImportant = true,
-        ),
+        )
     )
 }
 ```
