@@ -5,9 +5,12 @@
 
 /artifacts/
 /codeStyles/
+/InspectionProfiles/
 /appInsightsSettings.xml
 /compiler.xml
+/dbnavigator.xml
 /gradle.xml
 /kotlinc.xml
 /migrations.xml
 /misc.xml
+/vcs.xml
