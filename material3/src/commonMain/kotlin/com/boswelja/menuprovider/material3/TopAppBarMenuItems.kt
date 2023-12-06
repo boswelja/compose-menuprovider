@@ -4,8 +4,6 @@ import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.layout.Row
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExposedDropdownMenuBox
 import androidx.compose.runtime.Composable
@@ -19,7 +17,6 @@ import androidx.compose.ui.Modifier
 import com.boswelja.menuprovider.AnimatedMenuItems
 import com.boswelja.menuprovider.LocalMenuHost
 import com.boswelja.menuprovider.MenuHost
-import com.boswelja.menuprovider.MenuItem
 
 /**
  * Takes the menu items provided to [menuHost] and displays them in such a way that is suitable for
@@ -55,12 +52,10 @@ public fun TopAppBarMenuItems(
                 var menuExpanded by rememberSaveable { mutableStateOf(false) }
                 ExposedDropdownMenuBox(expanded = menuExpanded, onExpandedChange = { menuExpanded = !menuExpanded}) {
                     IconButtonMenuItem(
-                        menuItem = MenuItem(
-                            label = "More",
-                            imageVector = Icons.Default.MoreVert,
-                            onClick = { menuExpanded = !menuExpanded },
-                            isImportant = false
-                        ),
+                        menuItem = DefaultMenuItems
+                            .moreOptions {
+                                menuExpanded = !menuExpanded
+                            },
                         modifier = Modifier.menuAnchor()
                     )
                     ExposedDropdownMenu(
