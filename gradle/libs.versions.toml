@@ -1,6 +1,6 @@
 [versions]
 android-gradle-plugin = "8.1.4"
-detekt = "1.23.3"
+detekt = "1.23.4"
 kotlin = "1.9.21"
 dokka = "1.9.10"
 
