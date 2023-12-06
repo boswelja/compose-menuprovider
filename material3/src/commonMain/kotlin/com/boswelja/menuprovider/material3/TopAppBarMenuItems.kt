@@ -6,10 +6,12 @@ import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.layout.Row
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.MoreVert
+import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExposedDropdownMenuBox
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
@@ -43,9 +45,13 @@ public fun TopAppBarMenuItems(
         }
         Row(modifier) {
             if (hasOverflow) {
-                val visibleItemRange by remember(menuItems, maxVisibleActions) {
-                    derivedStateOf { 0..<maxVisibleActions }
+                val visibleItemRange = remember(menuItems, maxVisibleActions) {
+                    0..<maxVisibleActions
                 }
+                val overflowItemRange = remember(menuItems, maxVisibleActions) {
+                    maxVisibleActions..<menuItems.size
+                }
+
                 visibleItemRange.forEach {
                     TopAppBarAction(menuItems[it])
                 }
@@ -61,6 +67,14 @@ public fun TopAppBarMenuItems(
                         ),
                         modifier = Modifier.menuAnchor()
                     )
+                    ExposedDropdownMenu(
+                        expanded = menuExpanded,
+                        onDismissRequest = { menuExpanded = false }
+                    ) {
+                        overflowItemRange.forEach {
+                            DropdownMenuItem(menuItems[it])
+                        }
+                    }
                 }
             } else {
                 menuItems.forEach { menuItem ->
@@ -82,4 +96,21 @@ internal fun TopAppBarAction(
     ) {
         Icon(menuItem.imageVector, menuItem.label)
     }
+}
+
+@Composable
+internal fun DropdownMenuItem(
+    menuItem: MenuItem,
+    modifier: Modifier = Modifier,
+) {
+    DropdownMenuItem(
+        text = {
+            Text(menuItem.label)
+        },
+        leadingIcon = {
+            Icon(menuItem.imageVector, null)
+        },
+        onClick = menuItem.onClick,
+        modifier = modifier,
+    )
 }
