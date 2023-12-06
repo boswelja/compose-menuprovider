@@ -20,6 +20,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import com.boswelja.menuprovider.AnimatedMenuItems
 import com.boswelja.menuprovider.LocalMenuHost
 import com.boswelja.menuprovider.MenuHost
@@ -59,12 +60,10 @@ public fun TopAppBarMenuItems(
                 var menuExpanded by rememberSaveable { mutableStateOf(false) }
                 ExposedDropdownMenuBox(expanded = menuExpanded, onExpandedChange = { menuExpanded = !menuExpanded}) {
                     TopAppBarAction(
-                        menuItem = MenuItem(
-                            label = "More",
-                            imageVector = Icons.Default.MoreVert,
-                            onClick = { menuExpanded = !menuExpanded },
-                            isImportant = false
-                        ),
+                        menuItem = DefaultMenuItems
+                            .moreOptions {
+                                menuExpanded = !menuExpanded
+                            },
                         modifier = Modifier.menuAnchor()
                     )
                     ExposedDropdownMenu(
