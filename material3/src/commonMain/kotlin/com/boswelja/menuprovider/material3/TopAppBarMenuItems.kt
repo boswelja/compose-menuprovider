@@ -50,7 +50,7 @@ public fun TopAppBarMenuItems(
                 }
 
                 var menuExpanded by rememberSaveable { mutableStateOf(false) }
-                ExposedDropdownMenuBox(expanded = menuExpanded, onExpandedChange = { menuExpanded = !menuExpanded}) {
+                ExposedDropdownMenuBox(expanded = menuExpanded, onExpandedChange = { menuExpanded = !menuExpanded }) {
                     IconButtonMenuItem(
                         menuItem = DefaultMenuItems
                             .moreOptions {
