@@ -15,7 +15,7 @@ plugins {
 }
 
 group = "io.github.boswelja.menuprovider"
-version = "1.0.4"
+version = "1.0.5"
 
 android {
     namespace = "com.boswelja.menuprovider.material3"
