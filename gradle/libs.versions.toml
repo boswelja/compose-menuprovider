@@ -1,7 +1,7 @@
 [versions]
 android-gradle-plugin = "8.1.4"
 detekt = "1.23.4"
-kotlin = "1.9.21"
+kotlin = "1.9.22"
 dokka = "1.9.10"
 
 compose = "1.5.11"
