@@ -16,8 +16,8 @@ dependencyResolutionManagement {
 }
 
 plugins {
-    id("com.gradle.enterprise") version("3.16")
-    id("com.android.settings") version("8.1.4")
+    id("com.gradle.enterprise") version("3.16.1")
+    id("com.android.settings") version("8.2.0")
 }
 
 rootProject.name = "Compose MenuProvider"
