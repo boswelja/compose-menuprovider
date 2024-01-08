@@ -21,7 +21,7 @@ dependencies {
 ```kotlin
 @Composable
 fun MyComposable() {
-    ProvideMenuHost {
+    ProvideCumulativeMenuHost {
         Scaffold(
             topBar = {
                 TopAppBar(

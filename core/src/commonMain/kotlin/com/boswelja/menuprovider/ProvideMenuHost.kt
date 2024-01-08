@@ -16,3 +16,21 @@ public fun ProvideMenuHost(
         content = content,
     )
 }
+
+/**
+ * A convenience function for providing a cumulative MenuHost. See [rememberCumulativeMenuHost] for
+ * details. To provide your own MenuHost, use [ProvideMenuHost].
+ */
+@Composable
+public fun ProvideCumulativeMenuHost(content: @Composable () -> Unit) {
+    ProvideMenuHost(menuHost = rememberCumulativeMenuHost(), content = content)
+}
+
+/**
+ * A convenience function for providing a single-top MenuHost. See [rememberCumulativeMenuHost] for
+ * details. To provide your own MenuHost, use [ProvideMenuHost].
+ */
+@Composable
+public fun ProvideSingleTopMenuHost(content: @Composable () -> Unit) {
+    ProvideMenuHost(menuHost = rememberSingleTopMenuHost(), content = content)
+}
