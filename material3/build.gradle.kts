@@ -14,8 +14,8 @@ plugins {
     id("signing")
 }
 
-group = "io.github.boswelja.menuprovider"
-version = "1.1.1"
+group = findProperty("group")!!
+version = findProperty("version")!!
 
 android {
     namespace = "com.boswelja.menuprovider.material3"
