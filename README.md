@@ -6,7 +6,7 @@ An AndroidX MenuHost & MenuProvider-like API for Jetpack Compose!
 
 ```kt
 dependencies {
-    val menuproviderVersion = "1.2.0"
+    val menuproviderVersion = "1.2.1"
     
     // Core provides a generic implementation fit for any design system
     implementation("io.github.boswelja.menuprovider:core:$menuproviderVersion")
