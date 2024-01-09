@@ -9,6 +9,8 @@
 /appInsightsSettings.xml
 /compiler.xml
 /dbnavigator.xml
+/deploymentTargetSelector.xml
+/discord.xml
 /gradle.xml
 /kotlinc.xml
 /migrations.xml
