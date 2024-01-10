@@ -59,6 +59,13 @@ kotlin {
                 implementation(compose.animation)
             }
         }
+        commonTest {
+            dependencies {
+                // Since MenuItems require icons, we need to import some to test with
+                implementation(compose.materialIconsExtended)
+                implementation(libs.kotlin.test)
+            }
+        }
     }
 }
 
