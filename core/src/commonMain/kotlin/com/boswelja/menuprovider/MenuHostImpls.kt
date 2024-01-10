@@ -1,8 +1,11 @@
 package com.boswelja.menuprovider
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 
 internal class CumulativeMenuHost : MenuHost {
     private val _menuItems = mutableStateListOf<MenuItem>()
@@ -19,16 +22,20 @@ internal class CumulativeMenuHost : MenuHost {
 }
 
 internal class SingleTopMenuHost : MenuHost {
-    private val _menuItems = mutableStateListOf<List<MenuItem>>()
+    private val _menuItemsStack = mutableListOf<List<MenuItem>>()
 
-    override val menuItems: List<MenuItem> = _menuItems.lastOrNull().orEmpty()
+    override var menuItems by mutableStateOf(emptyList<MenuItem>())
+        private set
 
     override fun addItems(vararg newItems: MenuItem) {
-        _menuItems.add(newItems.toList())
+        val newItemsList = newItems.toList()
+        _menuItemsStack.add(newItemsList)
+        menuItems = newItemsList
     }
 
     override fun removeItems(vararg items: MenuItem) {
-        _menuItems.remove(items.toList())
+        _menuItemsStack.remove(items.toList())
+        menuItems = _menuItemsStack.lastOrNull().orEmpty()
     }
 }
 
