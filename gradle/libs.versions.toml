@@ -1,10 +1,10 @@
 [versions]
-android-gradle-plugin = "8.2.1"
+android-gradle-plugin = "8.2.2"
 detekt = "1.23.4"
-kotlin = "1.9.21"
+kotlin = "1.9.22"
 dokka = "1.9.10"
 
-compose = "1.5.11"
+compose = "1.5.12"
 
 [libraries]
 kotlin-test = { group = "org.jetbrains.kotlin", name = "kotlin-test" }
