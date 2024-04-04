@@ -1,5 +1,6 @@
 import org.jetbrains.dokka.gradle.DokkaTaskPartial
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
+import org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl
 import java.net.URL
 
 plugins {
@@ -44,12 +45,34 @@ android {
     }
 }
 
+repositories {
+    google()
+    mavenCentral()
+}
+
 kotlin {
     jvmToolchain(17)
+
     explicitApi()
 
+    // Android
     androidTarget {
         publishLibraryVariants("release")
+    }
+
+    // Apple
+    macosX64()
+    macosArm64()
+    iosX64()
+    iosArm64()
+
+    // JVM
+    jvm()
+
+    // WASM
+    @OptIn(ExperimentalWasmDsl::class)
+    wasmJs {
+        browser()
     }
 
     sourceSets {
