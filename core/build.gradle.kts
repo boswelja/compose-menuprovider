@@ -51,6 +51,8 @@ repositories {
 }
 
 kotlin {
+    applyDefaultHierarchyTemplate()
+
     jvmToolchain(17)
 
     explicitApi()
