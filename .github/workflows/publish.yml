@@ -5,7 +5,7 @@ on:
 
 jobs:
   publish-github:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     permissions:
       contents: read
       packages: write
@@ -31,7 +31,7 @@ jobs:
           ORG_GRADLE_PROJECT_signingPassword: ${{ secrets.SIGNING_PASSWORD }}
 
   publish-oss:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     permissions:
       contents: read
       packages: write
@@ -57,7 +57,7 @@ jobs:
           ORG_GRADLE_PROJECT_signingPassword: ${{ secrets.SIGNING_PASSWORD }}
 
   upload-pages:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     needs:
       - publish-github
       - publish-oss
