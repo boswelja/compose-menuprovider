@@ -82,7 +82,7 @@ kotlin {
             dependencies {
                 api(project(":core"))
                 implementation(compose.material3)
-            }
+                implementation(compose.components.resources)}
         }
     }
 
