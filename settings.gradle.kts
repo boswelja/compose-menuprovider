@@ -10,7 +10,7 @@ pluginManagement {
 
 plugins {
     id("com.gradle.enterprise") version("3.16.1")
-    id("com.android.settings") version("8.2.0")
+    id("com.android.settings") version("8.3.1")
 }
 
 rootProject.name = "Compose MenuProvider"
