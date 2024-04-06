@@ -10,8 +10,6 @@ plugins {
 
     alias(libs.plugins.detekt)
 
-    alias(libs.plugins.dokka)
-
     id("com.boswelja.publish")
 }
 
@@ -102,19 +100,4 @@ publish {
     description = "An AndroidX MenuHost & MenuProvider-like API for Jetpack Compose!"
     repositoryUrl = "https://github.com/boswelja/compose-menuprovider"
     license = "MIT"
-}
-
-tasks.withType<DokkaTaskPartial>().configureEach {
-    dokkaSourceSets.configureEach {
-        includes.from("MODULE.md")
-        externalDocumentationLink(
-            url = "https://developer.android.com/reference/kotlin/",
-            packageListUrl = "https://developer.android.com/reference/kotlin/androidx/package-list"
-        )
-        sourceLink {
-            localDirectory.set(projectDir.resolve("src"))
-            remoteUrl.set(URL("https://github.com/boswelja/compose-menuprovider/tree/main/material3/src"))
-            remoteLineSuffix.set("#L")
-        }
-    }
 }
