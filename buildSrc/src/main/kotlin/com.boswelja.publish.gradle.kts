@@ -1,3 +1,4 @@
+import org.jetbrains.dokka.gradle.DokkaTask
 import org.jetbrains.dokka.gradle.DokkaTaskPartial
 import java.net.URL
 
@@ -25,6 +26,12 @@ signing {
     sign(publishing.publications)
 }
 
+val javadocJar by tasks.registering(Jar::class) {
+    dependsOn(tasks.dokkaHtml)
+    from(tasks.dokkaHtml.flatMap(DokkaTask::outputDirectory))
+    archiveClassifier = "javadoc"
+}
+
 afterEvaluate {
     tasks.withType<DokkaTaskPartial>().configureEach {
         dokkaSourceSets.configureEach {
@@ -35,14 +42,6 @@ afterEvaluate {
                 remoteLineSuffix.set("#L")
             }
         }
-    }
-
-    val dokkaHtml by tasks.getting(org.jetbrains.dokka.gradle.DokkaTask::class)
-
-    val javadocJar: TaskProvider<Jar> by tasks.registering(Jar::class) {
-        dependsOn(dokkaHtml)
-        archiveClassifier.set("javadoc")
-        from(dokkaHtml.outputDirectory)
     }
 
     publishing {
@@ -94,5 +93,11 @@ afterEvaluate {
                 }
             }
         }
+    }
+
+    // TODO: Remove after https://youtrack.jetbrains.com/issue/KT-46466 is fixed
+    //  Thanks to KSoup repository for this code snippet
+    tasks.withType(AbstractPublishToMaven::class).configureEach {
+        dependsOn(tasks.withType(Sign::class))
     }
 }
