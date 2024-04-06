@@ -1,4 +1,8 @@
+import org.jetbrains.dokka.gradle.DokkaTaskPartial
+import java.net.URL
+
 plugins {
+    id("org.jetbrains.dokka")
     id("maven-publish")
     id("signing")
 }
@@ -22,6 +26,25 @@ signing {
 }
 
 afterEvaluate {
+    tasks.withType<DokkaTaskPartial>().configureEach {
+        dokkaSourceSets.configureEach {
+            includes.from("MODULE.md")
+            sourceLink {
+                localDirectory.set(projectDir.resolve("src"))
+                remoteUrl.set(URL("${extension.repositoryUrl.get()}/tree/main/${project.name}/src"))
+                remoteLineSuffix.set("#L")
+            }
+        }
+    }
+
+    val dokkaHtml by tasks.getting(org.jetbrains.dokka.gradle.DokkaTask::class)
+
+    val javadocJar: TaskProvider<Jar> by tasks.registering(Jar::class) {
+        dependsOn(dokkaHtml)
+        archiveClassifier.set("javadoc")
+        from(dokkaHtml.outputDirectory)
+    }
+
     publishing {
         repositories {
             if (System.getenv("PUBLISHING") == "true") {
@@ -47,6 +70,7 @@ afterEvaluate {
         }
 
         publications.withType<MavenPublication> {
+            artifact(javadocJar)
             pom {
                 name = project.name
                 description = extension.description
