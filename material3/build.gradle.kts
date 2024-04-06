@@ -12,12 +12,8 @@ plugins {
 
     alias(libs.plugins.dokka)
 
-    id("maven-publish")
-    id("signing")
+    id("com.boswelja.publish")
 }
-
-group = findProperty("group")!!
-version = findProperty("version")!!
 
 android {
     namespace = "com.boswelja.menuprovider.material3"
@@ -82,7 +78,8 @@ kotlin {
             dependencies {
                 api(project(":core"))
                 implementation(compose.material3)
-                implementation(compose.components.resources)}
+                implementation(compose.components.resources)
+            }
         }
     }
 
@@ -101,63 +98,10 @@ detekt {
     basePath = rootDir.absolutePath
 }
 
-signing {
-    val signingKey: String? by project
-    val signingPassword: String? by project
-    useInMemoryPgpKeys(signingKey, signingPassword)
-    sign(publishing.publications)
-}
-
-publishing {
-    repositories {
-        if (System.getenv("PUBLISHING") == "true") {
-            maven("https://maven.pkg.github.com/boswelja/Compose-MenuProvider") {
-                val githubUsername: String? by project.properties
-                val githubToken: String? by project.properties
-                name = "github"
-                credentials {
-                    username = githubUsername
-                    password = githubToken
-                }
-            }
-            maven("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/") {
-                val ossrhUsername: String? by project
-                val ossrhPassword: String? by project
-                name = "oss"
-                credentials {
-                    username = ossrhUsername
-                    password = ossrhPassword
-                }
-            }
-        }
-    }
-
-    publications.withType<MavenPublication> {
-        pom {
-            name = "material3"
-            description = "An AndroidX MenuHost & MenuProvider-like API for Jetpack Compose!"
-            url = "https://github.com/boswelja/compose-menuprovider"
-            licenses {
-                license {
-                    name = "MIT"
-                    url = "https://github.com/boswelja/compose-menuprovider/blob/main/LICENSE"
-                }
-            }
-            developers {
-                developer {
-                    id = "boswelja"
-                    name = "Jack Boswell (boswelja)"
-                    email = "boswelja@outlook.com"
-                    url = "https://github.com/boswelja"
-                }
-            }
-            scm {
-                connection.set("scm:git:github.com/boswelja/compose-menuprovider.git")
-                developerConnection.set("scm:git:ssh://github.com/boswelja/compose-menuprovider.git")
-                url.set("https://github.com/boswelja/compose-menuprovider")
-            }
-        }
-    }
+publish {
+    description = "An AndroidX MenuHost & MenuProvider-like API for Jetpack Compose!"
+    repositoryUrl = "https://github.com/boswelja/compose-menuprovider"
+    license = "MIT"
 }
 
 tasks.withType<DokkaTaskPartial>().configureEach {
