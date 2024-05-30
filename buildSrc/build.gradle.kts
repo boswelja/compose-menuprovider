@@ -3,5 +3,5 @@ plugins {
 }
 
 dependencies {
-    implementation("org.jetbrains.dokka:dokka-gradle-plugin:1.9.20")
+    implementation(libs.dokka.gradle.plugin)
 }
