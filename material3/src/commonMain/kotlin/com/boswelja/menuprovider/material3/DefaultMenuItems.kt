@@ -6,7 +6,6 @@ import androidx.compose.runtime.Composable
 import com.boswelja.menuprovider.MenuItem
 import io.github.boswelja.menuprovider.material3.generated.resources.Res
 import io.github.boswelja.menuprovider.material3.generated.resources.menu_item_more
-import org.jetbrains.compose.resources.ExperimentalResourceApi
 import org.jetbrains.compose.resources.stringResource
 
 /**
@@ -19,7 +18,6 @@ public object DefaultMenuItems {
      * Retrieves the "more options" [MenuItem]. This is used to present the user with a list of
      * items when pressed, usually as a dropdown menu.
      */
-    @OptIn(ExperimentalResourceApi::class)
     @Composable
     public fun moreOptions(onClick: () -> Unit): MenuItem =
         MenuItem(

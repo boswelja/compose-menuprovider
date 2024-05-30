@@ -1,12 +1,11 @@
-import org.jetbrains.dokka.gradle.DokkaTaskPartial
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl
-import java.net.URL
 
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.compose.multiplatform)
+    alias(libs.plugins.compose.compiler)
 
     alias(libs.plugins.detekt)
 
@@ -43,7 +42,13 @@ android {
 }
 
 repositories {
-    google()
+    google {
+        content {
+            includeGroupByRegex("com\\.android.*")
+            includeGroupByRegex("com\\.google.*")
+            includeGroupByRegex("androidx.*")
+        }
+    }
     mavenCentral()
 }
 
