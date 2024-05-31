@@ -58,9 +58,6 @@ jobs:
 
   upload-pages:
     runs-on: macos-latest
-    needs:
-      - publish-github
-      - publish-oss
     steps:
       - name: Checkout
         uses: actions/checkout@v4
