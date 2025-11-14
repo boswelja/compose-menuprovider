@@ -1,6 +1,7 @@
 package com.boswelja.menuprovider.material3
 
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.ExposedDropdownMenuAnchorType
 import androidx.compose.material3.ExposedDropdownMenuBox
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -32,7 +33,7 @@ public fun ExposedDropdownMenuItems(
         IconButtonMenuItem(
             menuItem = DefaultMenuItems
                 .moreOptions(onClick = onExpandedChange),
-            modifier = Modifier.menuAnchor().then(modifier)
+            modifier = Modifier.menuAnchor(ExposedDropdownMenuAnchorType.PrimaryNotEditable).then(modifier)
         )
         ExposedDropdownMenu(
             expanded = expanded,
